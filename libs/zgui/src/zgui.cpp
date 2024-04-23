@@ -1277,6 +1277,12 @@ ZGUI_API ImFont* zguiIoAddFontFromMemory(void* font_data, int font_size, float s
     return ImGui::GetIO().Fonts->AddFontFromMemoryTTF(font_data, font_size, size_pixels, &config, nullptr);
 }
 
+ZGUI_API ImFont* zguiIoAddFontFromMemoryCompressed(void* font_data, int font_size, float size_pixels) {
+    ImFontConfig config = ImFontConfig();
+    config.FontDataOwnedByAtlas = false;
+    return ImGui::GetIO().Fonts->AddFontFromMemoryCompressedTTF(font_data, font_size, size_pixels, &config, nullptr);
+}
+
 ZGUI_API ImFontConfig zguiFontConfig_Init(void) {
     return ImFontConfig();
 }
