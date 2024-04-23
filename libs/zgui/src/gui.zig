@@ -204,6 +204,11 @@ pub const io = struct {
     }
     extern fn zguiIoAddFontFromMemory(font_data: *const anyopaque, font_size: c_int, size_pixels: f32) Font;
 
+    pub fn addFontFromMemoryCompressed(fontdata: []const u32, size_pixels: f32) Font {
+        return zguiIoAddFontFromMemoryCompressed(fontdata.ptr, @intCast(fontdata.len), size_pixels);
+    }
+    extern fn zguiIoAddFontFromMemoryCompressed(font_data: *const anyopaque, font_size: c_int, size_pixels: f32) Font;
+
     pub fn addFontFromMemoryWithConfig(
         fontdata: []const u8,
         size_pixels: f32,
